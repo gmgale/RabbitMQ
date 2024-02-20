@@ -12,3 +12,4 @@
 
 5: https://www.rabbitmq.com/tutorials/tutorial-five-javascript.html
 
+6: https://www.rabbitmq.com/tutorials/tutorial-six-javascript.html
