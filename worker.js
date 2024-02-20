@@ -11,23 +11,17 @@ amqp.connect('amqp://localhost', function(error0, connection) {
             throw error1;
         }
 
-        var queue = 'task_queue';
+        var queue = 'hello';
 
-// This makes sure the queue is declared before attempting to consume from it
         channel.assertQueue(queue, {
-            durable: true
+            durable: false
         });
 
-        channel.consume(queue, function(msg) {
-            var secs = msg.content.toString().split('.').length - 1;
+        console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
 
+        channel.consume(queue, function(msg) {
             console.log(" [x] Received %s", msg.content.toString());
-            setTimeout(function() {
-                console.log(" [x] Done");
-            }, secs * 1000);
         }, {
-            // automatic acknowledgment mode,
-            // see ../confirms.html for details
             noAck: true
         });
     });
