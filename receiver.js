@@ -24,11 +24,12 @@ amqp.connect('amqp://localhost', function(error0, connection) {
             console.log(" [x] Received %s", msg.content.toString());
             setTimeout(function() {
                 console.log(" [x] Done");
+                channel.ack(msg);
             }, secs * 1000);
         }, {
             // automatic acknowledgment mode,
             // see ../confirms.html for details
-            noAck: true
+            noAck: false
         });
     });
 });

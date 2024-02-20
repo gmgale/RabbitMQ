@@ -10,7 +10,6 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         if (error1) {
             throw error1;
         }
-
         var queue = 'task_queue';
         var msg = process.argv.slice(2).join(' ') || "Hello World!";
 
@@ -24,6 +23,6 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     });
     setTimeout(function() {
         connection.close();
-        process.exit(0);
+        process.exit(0)
     }, 500);
 });
